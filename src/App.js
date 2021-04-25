@@ -10,6 +10,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Logout from './Logout';
+import mbLogo from './images/mbLogo.webp'
 
 
 class App extends Component{
@@ -47,14 +48,16 @@ class App extends Component{
                     <Sidebar position="left" visible={true} showCloseIcon={false} dismissable={false} modal={false}
                              style={{padding:0, width:'175px'}}>
                         <Menu model={this.state.items}
-                              style={{width: '100%', height:'100%', marginTop:'135px'}}/>
+                              style={{width: '100%', height:'100%', marginTop:'60px'}}/>
                     </Sidebar>
-                    <Sidebar position="top" visible={true} showCloseIcon={false} dismissable={false} modal={false}
-                             style={{height:'140px', backgroundColor:'black', textAlign:'center'}}>
-                        <h2 style={{color:'white'}}>React Native Application Overview</h2>
-                        <h2 style={{color:'#900C3F'}}>MurderBook</h2>
+                    <Sidebar style={{height:'65px', backgroundColor:'black'}} position="top" visible={true} showCloseIcon={false} dismissable={false} modal={false}>
+                        <div style={{textAlign:'center'}}>
+                        <img style={{float: 'left', height: '45px'}}src={mbLogo} alt="mbLogo"/>
+                            <h2 style={{color:'#900C3F', margin:'0px', fontFamily: "Arial, Helvetica, sans-serif"}}>MurderBook</h2>
+                            <h3 style={{color:'white', marginTop: '2px'}}>React Native Application Overview</h3>
+                        </div>
                     </Sidebar>
-                    <div style={{marginTop:"135px",marginLeft:"175px", padding:'15px'}}>
+                    <div style={{marginLeft:"175px", padding:'15px'}}>
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/about" component={About} />

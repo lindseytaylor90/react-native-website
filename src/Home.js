@@ -7,11 +7,8 @@ class Home extends Component{
     {
 
         return (
-            <div>
-                <p>Welcome to home page ! </p>
-                <div style={{marginTop: "50px"}}>
-                    <DisplayImages/>
-                </div>
+            <div style={{paddingTop: '60px'}}>
+                <DisplayImages/>
             </div>
         );
     }
