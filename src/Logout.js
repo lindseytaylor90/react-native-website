@@ -5,7 +5,7 @@ class Logout extends Component{
     render()
     {
         return (
-            <div>
+            <div style={{marginTop: "75px"}}>
                 <p>Good bye ! </p>
             </div>
         );

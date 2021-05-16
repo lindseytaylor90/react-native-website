@@ -5,8 +5,8 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {Sidebar} from 'primereact/sidebar';
 import {Menu} from 'primereact/menu';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-
+import {Route, Switch, Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router';
 import Home from './Home';
 import About from './About';
 import Logout from './Logout';
@@ -22,28 +22,31 @@ class App extends Component{
                 {
                     label:'Home',
                     icon:'pi pi-home',
-                    command: () => {window.location = "#/"}
+                    command: () => {this.navigateToPage("/")}
                 },
                 {
                     label:'About',
                     icon:'pi pi-info',
                     className: "p-menuitem-active",
-                    command: () => {window.location = "#/about"}
+                    command: () => {this.navigateToPage("/about")}
                 },
                 {
                     label:'Logout',
                     icon:'pi pi-power-off',
-                    command: () => {window.location = "#/logout"}
+                    command: () => {this.navigateToPage("/logout")}
                 }
 
             ]
         };
     }
 
+    navigateToPage = (path) => {
+        this.props.history.push(path);
+    }
+
     render()
     {
         return (
-            <Router>
                 <div className="App" >
                     <Sidebar position="left" visible={true} showCloseIcon={false} dismissable={false} modal={false}
                              style={{padding:0, width:'175px'}}>
@@ -60,14 +63,14 @@ class App extends Component{
                     <div style={{marginLeft:"175px", padding:'15px'}}>
                         <Switch>
                             <Route exact path="/" component={Home} />
-                            <Route path="/about" component={About} />
-                            <Route path="/logout" component={Logout} />
+                            <Route exact path="/about" component={About} />
+                            <Route exact path="/logout" component={Logout} />
+                            <Redirect to="/"/>
                         </Switch>
                     </div>
                 </div>
-            </Router>
         );
     }
 }
 
-export default App;
+export default withRouter(App);
