@@ -5,8 +5,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {Sidebar} from 'primereact/sidebar';
 import {Menu} from 'primereact/menu';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {withRouter} from 'react-router';
+import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Logout from './Logout';
@@ -62,10 +61,10 @@ class App extends Component{
                     </Sidebar>
                     <div style={{marginLeft:"175px", padding:'15px'}}>
                         <Switch>
-                            <Route exact path="/" component={Home} />
+                            <Route path="/home" component={Home} />
                             <Route exact path="/about" component={About} />
                             <Route exact path="/logout" component={Logout} />
-                            <Redirect to="/"/>
+                            <Redirect to="/home"/>
                         </Switch>
                     </div>
                 </div>
